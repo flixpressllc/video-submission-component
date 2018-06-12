@@ -1,1 +1,29 @@
-<div><h1>Welcome to Glimmer!</h1></div>
+<div>
+  {{#if steps.one}}
+    Upload Your Video
+    <FileChooser @accept="video/*" @onFileChosen={{action handleFileChosen}}></FileChooser>
+  {{/if}}
+
+  {{#if steps.two}}
+    <p>
+      If you provide your name and email address, we can personalize
+      your video and then tell you when it is done.
+    </p>
+    <label for="name">First Name</label>
+    <input type="text" id="name" oninput={{action nameChanged}} value={{name}}/>
+
+    <label for="email">Email Address</label>
+    <input type="text" id="email" oninput={{action emailChanged}} value={{email}}/>
+
+    <button type="button" onclick={{action submitData}}>Submit</button>
+  {{/if}}
+
+  {{#if steps.three}}
+    Please wait while your video uploads
+  {{/if}}
+
+  {{#if steps.four}}
+    Your video has uploaded!
+  {{/if}}
+
+</div>

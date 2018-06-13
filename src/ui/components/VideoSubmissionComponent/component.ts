@@ -2,10 +2,13 @@ import Component, { tracked } from '@glimmer/component';
 
 export default class VideoSubmissionComponent extends Component {
   private file: File;
-  
+
   @tracked private name = '';
   @tracked private email = '';
   @tracked private steps: {[p: string]: true} = {one: true};
+
+  @tracked('name') get noName() { return this.name === ''; }
+  @tracked('email') get noEmail() { return this.email === ''; }
 
   private setStep(stepName: string) {
     const newStep = {};

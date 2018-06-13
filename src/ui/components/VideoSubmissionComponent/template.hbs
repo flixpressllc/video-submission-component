@@ -33,7 +33,7 @@
   {{/if}}
 
   {{#if steps.three}}
-    Please wait while your video uploads
+    <DataUploader @name={{name}} @email={{email}} @file={{file}} @onComplete={{action handleDataUploaded}} @uploadUrl={{uploadUrl}} @submitUrl={{submitUrl}} />
   {{/if}}
 
   {{#if steps.four}}

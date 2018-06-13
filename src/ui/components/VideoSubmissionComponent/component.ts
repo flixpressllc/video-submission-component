@@ -2,6 +2,8 @@ import Component, { tracked } from '@glimmer/component';
 
 export default class VideoSubmissionComponent extends Component {
   private file: File;
+  private uploadUrl: string = 'https://example.com/upload';
+  private submitUrl: string = 'https://example.com/api/submit';
 
   @tracked private name = '';
   @tracked private email = '';
@@ -31,10 +33,10 @@ export default class VideoSubmissionComponent extends Component {
 
   private submitData() {
     this.setStep('three');
-    setTimeout(() => this.setStep('four'), 3000);
   }
 
-  private uploadVideo() {
-    //
+  private handleDataUploaded() {
+    this.setStep('four');
   }
+
 }

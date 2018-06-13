@@ -2,8 +2,8 @@ import Component, { tracked } from '@glimmer/component';
 
 export default class VideoSubmissionComponent extends Component {
   private file: File;
-  private uploadUrl: string = 'https://example.com/upload';
-  private submitUrl: string = 'https://example.com/api/submit';
+  private uploadUrl: string;
+  private submitUrl: string;
 
   @tracked private name = '';
   @tracked private email = '';
@@ -11,6 +11,18 @@ export default class VideoSubmissionComponent extends Component {
 
   @tracked('name') get noName() { return this.name === ''; }
   @tracked('email') get noEmail() { return this.email === ''; }
+
+  public didInsertElement() {
+    setTimeout(() => {
+      // inside the timeout, bounds.firstNode is different than in the method
+      // it actually points to the root web-component
+      // this is bizarre
+      // I assume it has something to do with being invoked as a web-component
+      // perhaps glimmer adds the webcomponent into the root component?
+      this.uploadUrl = (this.bounds.firstNode as HTMLElement).dataset.uploadEndpoint;
+      this.submitUrl = (this.bounds.firstNode as HTMLElement).dataset.submitEndpoint;
+    }, 0);
+  }
 
   private setStep(stepName: string) {
     const newStep = {};

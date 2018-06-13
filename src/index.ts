@@ -1,3 +1,5 @@
+import 'regenerator-runtime';
+
 import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
 import initializeCustomElements from '@glimmer/web-component';
 import App from './main';

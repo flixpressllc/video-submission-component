@@ -32,6 +32,7 @@
     "ember-cli-uglify": "^2.0.0-beta.1",
     "happy-helpers": "^1.2.2",
     "qunitjs": "^2.3.3",
+    "regenerator-runtime": "^0.11.1",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "typescript": "~2.6.0"

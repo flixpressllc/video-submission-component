@@ -1,4 +1,5 @@
 import Component, { tracked } from '@glimmer/component';
+import { setI18nLanguage } from '../i18n/helper';
 
 export default class VideoSubmissionComponent extends Component {
   private file: File;
@@ -21,6 +22,7 @@ export default class VideoSubmissionComponent extends Component {
       // perhaps glimmer adds the webcomponent into the root component?
       this.uploadUrl = (this.bounds.firstNode as HTMLElement).dataset.uploadEndpoint;
       this.submitUrl = (this.bounds.firstNode as HTMLElement).dataset.submitEndpoint;
+      setI18nLanguage((this.bounds.firstNode as HTMLElement).dataset.language);
     }, 0);
   }
 

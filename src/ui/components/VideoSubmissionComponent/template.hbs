@@ -1,7 +1,8 @@
 <div>
   {{#if steps.one}}
-    Upload Your Video
-    <FileChooser @accept="video/*" @onFileChosen={{action handleFileChosen}}></FileChooser>
+    <FileChooser @onFileChosen={{action handleFileChosen}} accept="video/*">
+      Pick a file
+    </FileChooser>
   {{/if}}
 
   {{#if steps.two}}

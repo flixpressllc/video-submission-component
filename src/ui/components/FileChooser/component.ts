@@ -5,4 +5,8 @@ export default class FileChooser extends Component {
     const file = ev.target.files[0];
     this.args.onFileChosen(file);
   }
+
+  private invokeFileInput() {
+    (this.bounds.firstNode as HTMLInputElement).click();
+  }
 }

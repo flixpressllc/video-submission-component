@@ -1,1 +1,2 @@
-<input type="file" accept={{@accept}} onchange={{action fileChanged}}/>
+<input style="display:none" type="file" onchange={{action fileChanged}} ...attributes/>
+<button type="button" onclick={{action invokeFileInput}}>{{yield}}</button>

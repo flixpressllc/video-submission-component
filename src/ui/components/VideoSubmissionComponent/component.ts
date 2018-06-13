@@ -8,7 +8,7 @@ export default class VideoSubmissionComponent extends Component {
 
   @tracked private name = '';
   @tracked private email = '';
-  @tracked private steps: {[p: string]: true} = {one: true};
+  @tracked private steps: {[p: string]: true} = {};
 
   @tracked('name') get noName() { return this.name === ''; }
   @tracked('email') get noEmail() { return this.email === ''; }
@@ -22,7 +22,8 @@ export default class VideoSubmissionComponent extends Component {
       // perhaps glimmer adds the webcomponent into the root component?
       this.uploadUrl = (this.bounds.firstNode as HTMLElement).dataset.uploadEndpoint;
       this.submitUrl = (this.bounds.firstNode as HTMLElement).dataset.submitEndpoint;
-      setI18nLanguage((this.bounds.firstNode as HTMLElement).dataset.language);
+      setI18nLanguage((this.bounds.firstNode as HTMLElement).dataset.language || 'english');
+      this.setStep('one');
     }, 0);
   }
 

@@ -5,7 +5,7 @@ let currentLanguage = 'english';
 
 export default function i18n(params: string[] | string): string {
   const [stringPath] = [].concat(params);
-  return findString('english', stringPath);
+  return findString(currentLanguage, stringPath);
 }
 
 export function setI18nLanguage(language: string) {

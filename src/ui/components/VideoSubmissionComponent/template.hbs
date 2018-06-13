@@ -1,34 +1,33 @@
 <div>
   {{#if steps.one}}
     <FileChooser @onFileChosen={{action handleFileChosen}} accept="video/*">
-      Pick a file
+      {{i18n 'button.invoke_file_picker'}}
     </FileChooser>
   {{/if}}
 
   {{#if steps.two}}
     <div class="field">
-      <label for="name">First Name</label>
+      <label for="name">{{i18n 'label.first_name'}}</label>
       <input type="text" id="name" oninput={{action nameChanged}} value={{name}}/>
     </div>
 
     <div class="field">
-      <label for="email">Email Address</label>
+      <label for="email">{{i18n 'label.email'}}</label>
       <input type="text" id="email" oninput={{action emailChanged}} value={{email}}/>
     </div>
 
     {{#if noName}}
       <p class="info">
-        If you do not provide your name, we cannot personalize your video.
+        {{i18n 'paragraph.no_name_consequences'}}
       </p>
     {{/if}}
     {{#if noEmail}}
       <p class="info">
-        If you do not provide an email address, we can not send you a link when
-        your video is done processing.
+        {{i18n 'paragraph.no_email_consequences'}}
       </p>
     {{/if}}
     <div class="field">
-      <button type="button" onclick={{action submitData}}>Submit</button>
+      <button type="button" onclick={{action submitData}}>{{i18n 'button.submit'}}</button>
     </div>
   {{/if}}
 
@@ -37,7 +36,7 @@
   {{/if}}
 
   {{#if steps.four}}
-    Your video has uploaded!
+    {{i18n 'paragraph.video_finished_uploading'}}
   {{/if}}
 
 </div>

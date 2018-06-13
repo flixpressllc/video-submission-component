@@ -1,4 +1,5 @@
 import Component, { tracked } from '@glimmer/component';
+import i18n from '../i18n/helper';
 
 interface IArgs {
   uploadUrl: string;
@@ -10,14 +11,14 @@ interface IArgs {
 }
 
 export default class DataUploader extends Component {
-  @tracked private message = 'Uploading...';
+  @tracked private message = i18n('message.uploading');
 
   public didInsertElement() {
     this.uploadVideo()
     .then(this.submitData)
     .then(this.args.onComplete)
     .catch(() => {
-      this.message = 'Something went wrong, please try again later.';
+      this.message = i18n('message.upload_failure');
     });
   }
 

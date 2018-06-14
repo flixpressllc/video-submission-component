@@ -44,28 +44,28 @@
       })
     }
 
-    function replaceHandlebars(searchIn, handlesBarLookup) {
+    function replaceHandlebars(searchIn, handleBarsLookup) {
       let builtString = searchIn;
-      for (const key in handlesBarLookup) {
-        if (handlesBarLookup.hasOwnProperty(key)) {
-          const replacement = handlesBarLookup[key];
+      for (const key in handleBarsLookup) {
+        if (handleBarsLookup.hasOwnProperty(key)) {
+          const replacement = handleBarsLookup[key];
           const regex = new RegExp('{{ ?' + key + ' ?}}', 'g');
           builtString = builtString.replace(regex, replacement);
         }
       }
-      return builtString === searchIn ? builtString : replaceHandlebars(builtString, handlesBarLookup);
+      return builtString === searchIn ? builtString : replaceHandlebars(builtString, handleBarsLookup);
     }
 
     function setupShareButtons() {
       var links = document.querySelectorAll('.share a');
       Array.from(links).forEach(s => {
-        const handlesBarLookup ={
+        const handleBarsLookup ={
           'THIS_URL': window.location.href,
           'SUGGESTED_TWEET': 'Check out my Telemundo video!',
           'EMAIL_SUBJECT': '{{ SUGGESTED_TWEET }}',
           'EMAIL_BODY': 'I made a video for Telemundo KC! Check it out at {{ THIS_URL }}',
         }
-        var newHref = replaceHandlebars(s.getAttribute('href'), handlesBarLookup);
+        var newHref = replaceHandlebars(s.getAttribute('href'), handleBarsLookup);
         s.setAttribute('href', encodeURI(newHref))
       })
     }

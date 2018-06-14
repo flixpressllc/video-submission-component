@@ -19,14 +19,21 @@
     var loadingElement = document.querySelector('.video-area .loading');
     var id = document.location.search.match(/id=(.*)&?/)[1];
     var videoUrl = '//files.renderxpress.com/' + id + '_1080p.mp4';
+    var pollCount = 0
 
     function timeout(int) { return new Promise(function(res) { setTimeout(res, int) })};
+
+    function pollTime() {
+      return Math.min(3000 + (700 * pollCount), 15000)
+    }
+
     function pollForFile(url) {
       return window.fetch(url, {method: 'HEAD'})
       .then(function(response) {
         if (response.ok) { return res(); }
         if (response.status === 404) {
-          return timeout(3000).then(function() {
+          return timeout(pollTime()).then(function() {
+            pollCount++;
             return pollForFile(url);
           });
         }

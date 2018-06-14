@@ -92,8 +92,7 @@
       setVideoAndPlay(videoUrl);
     }).catch(function(e) {
       removeShareButtons();
-      setVideoAndPlay('somedefaultvideourl.mp4')
-      // set message to user with link to create a video of their own
+      setVideoAndPlay('somedefaultvideourl.mp4'); console.warn('no default video url is specified yet')
     })
   </script>
 </body>

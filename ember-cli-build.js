@@ -7,9 +7,14 @@ const commonjs = require('rollup-plugin-commonjs');
 module.exports = function(defaults) {
   let app = new GlimmerApp(defaults, {
     inlineContent: {
-      'upload-url': { content: '//localhost:50212/api/upload' },
+      'upload-url': { content: (function() {
+        switch(process.env.EMBER_ENV) {
+          default:
+          return '//localhost:50212/api/upload';
+        }
+      })() },
     },
-    
+
     rollup: {
       plugins: [
         resolve({ jsnext: true, module: true, main: true }),

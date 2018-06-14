@@ -13,43 +13,51 @@
     <div class="loading">Please wait while we get your video...</div>
   </div>
 
+  <div class="share">
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">Share on Facebook</a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?url=" target="_blank">Share on Twitter</a>
+  </div>
+
   <script type="text/javascript">
-    var videoArea = document.querySelector('.video-area');
-    var video = document.querySelector('.video-area video');
-    var loadingElement = document.querySelector('.video-area .loading');
     var id = document.location.search.match(/id=(.*)&?/)[1];
     var videoUrl = '//files.renderxpress.com/' + id + '_1080p.mp4';
-    var pollCount = 0
 
-    function timeout(int) { return new Promise(function(res) { setTimeout(res, int) })};
 
-    function pollTime() {
-      return Math.min(3000 + (700 * pollCount), 15000)
-    }
-
-    function pollForFile(url) {
+    function ensureFileExists(url) {
+      // console.warn('remove this line to restore real functionality'); return Promise.resolve();
       return window.fetch(url, {method: 'HEAD'})
       .then(function(response) {
-        if (response.ok) { return res(); }
-        if (response.status === 404) {
-          return timeout(pollTime()).then(function() {
-            pollCount++;
-            return pollForFile(url);
-          });
-        }
-        return response.text().then(function (text) {
-          return Promise.reject({status: response.status, body: text});
-        })
+        if (response.ok) { return Promise.resolve(); }
+        return Promise.reject();
       })
     }
 
-    pollForFile(videoUrl).then(function() {
+    function setupShareButtons() {
+      var fb = document.querySelector('.share .facebook');
+      var t = document.querySelector('.share .twitter');
+      [fb, t].forEach(s => s.setAttribute('href', s.getAttribute('href') + window.location.href))
+    }
+
+    function removeShareButtons() {
+      document.querySelector('.share').setAttribute('style', 'display: none')
+    }
+
+    function setVideoAndPlay(url) {
+      var video = document.querySelector('.video-area video');
+      var loadingElement = document.querySelector('.video-area .loading');
       loadingElement.setAttribute('style', 'display:none');
-      video.setAttribute('src', videoUrl);
+      video.setAttribute('src', url);
       video.setAttribute('style', '');
       video.play();
+    }
+
+    ensureFileExists(videoUrl).then(function() {
+      setupShareButtons();
+      setVideoAndPlay(videoUrl);
     }).catch(function(e) {
-      console.log(e)
+      removeShareButtons();
+      setVideoAndPlay('somedefaultvideourl.mp4')
+      // set message to user with link to create a video of their own
     })
   </script>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Telemundo KC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>Telemundo KC</h1>
+  <div class="video-area">
+    <video style="display: none" controls></video>
+    <div class="loading">Please wait while we get your video...</div>
+  </div>
+
+  <script type="text/javascript">
+    var videoArea = document.querySelector('.video-area');
+    var video = document.querySelector('.video-area video');
+    var loadingElement = document.querySelector('.video-area .loading');
+    var id = document.location.search.match(/id=(.*)&?/)[1];
+    var videoUrl = '//files.renderxpress.com/' + id + '_1080p.mp4';
+
+    function timeout(int) { return new Promise(function(res) { setTimeout(res, int) })};
+    function pollForFile(url) {
+      return window.fetch(url, {method: 'HEAD'})
+      .then(function(response) {
+        if (response.ok) { return res(); }
+        if (response.status === 404) {
+          return timeout(3000).then(function() {
+            return pollForFile(url);
+          });
+        }
+        return response.text().then(function (text) {
+          return Promise.reject({status: response.status, body: text});
+        })
+      })
+    }
+
+    pollForFile(videoUrl).then(function() {
+      loadingElement.setAttribute('style', 'display:none');
+      video.setAttribute('src', videoUrl);
+      video.setAttribute('style', '');
+      video.play();
+    }).catch(function(e) {
+      console.log(e)
+    })
+  </script>
+</body>
+</html>

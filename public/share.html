@@ -45,11 +45,11 @@
     }
 
     function replaceHandlebars(searchIn, handleBarsLookup) {
-      let builtString = searchIn;
-      for (const key in handleBarsLookup) {
+      var builtString = searchIn;
+      for (var key in handleBarsLookup) {
         if (handleBarsLookup.hasOwnProperty(key)) {
-          const replacement = handleBarsLookup[key];
-          const regex = new RegExp('{{ ?' + key + ' ?}}', 'g');
+          var replacement = handleBarsLookup[key];
+          var regex = new RegExp('{{ ?' + key + ' ?}}', 'g');
           builtString = builtString.replace(regex, replacement);
         }
       }
@@ -59,7 +59,7 @@
     function setupShareButtons() {
       var links = document.querySelectorAll('.share a');
       Array.from(links).forEach(s => {
-        const handleBarsLookup ={
+        var handleBarsLookup ={
           'THIS_URL': window.location.href,
           'SUGGESTED_TWEET': 'Check out my Telemundo video!',
           'EMAIL_SUBJECT': '{{ SUGGESTED_TWEET }}',

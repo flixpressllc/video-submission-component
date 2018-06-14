@@ -14,17 +14,10 @@ export default class VideoSubmissionComponent extends Component {
   @tracked('email') get noEmail() { return this.email === ''; }
 
   public didInsertElement() {
-    setTimeout(() => {
-      // inside the timeout, bounds.firstNode is different than in the method
-      // it actually points to the root web-component
-      // this is bizarre
-      // I assume it has something to do with being invoked as a web-component
-      // perhaps glimmer adds the webcomponent into the root component?
-      this.uploadUrl = (this.bounds.firstNode as HTMLElement).dataset.uploadEndpoint;
-      this.submitUrl = (this.bounds.firstNode as HTMLElement).dataset.submitEndpoint;
-      setI18nLanguage((this.bounds.firstNode as HTMLElement).dataset.language || 'english');
-      this.setStep('one');
-    }, 0);
+    this.uploadUrl = this.bounds.firstNode.parentElement.dataset.uploadEndpoint;
+    this.submitUrl = this.bounds.firstNode.parentElement.dataset.submitEndpoint;
+    setI18nLanguage(this.bounds.firstNode.parentElement.dataset.language || 'english');
+    setTimeout(() => this.setStep('one'));
   }
 
   private setStep(stepName: string) {

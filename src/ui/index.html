@@ -16,8 +16,8 @@
   <body>
     {{content-for "body"}}
 
+    <div id="app" data-upload-endpoint="https://example.com/api/upload" data-submit-endpoint="https://example.com/api/submit" data-language="spanish"></div>
     <script src="{{rootURL}}app.js"></script>
-    <video-submission data-upload-endpoint="https://example.com/api/upload" data-submit-endpoint="https://example.com/api/submit" data-language="spanish"></video-submission>
 
     {{content-for "body-footer"}}
   </body>

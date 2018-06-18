@@ -14,9 +14,14 @@ export default class VideoSubmissionComponent extends Component {
   @tracked('email') get noEmail() { return this.email === ''; }
 
   public didInsertElement() {
-    this.uploadUrl = this.bounds.firstNode.parentElement.dataset.uploadEndpoint;
-    this.submitUrl = this.bounds.firstNode.parentElement.dataset.submitEndpoint;
-    setI18nLanguage(this.bounds.firstNode.parentElement.dataset.language || 'english');
+    const {
+      uploadEndpoint,
+      submitEndpoint,
+      language,
+    } = this.bounds.firstNode.parentElement.dataset;
+    this.uploadUrl = uploadEndpoint;
+    this.submitUrl = submitEndpoint;
+    setI18nLanguage(language || 'english');
     setTimeout(() => this.setStep('one'));
   }
 

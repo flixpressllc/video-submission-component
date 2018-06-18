@@ -9,23 +9,25 @@
     <div class="field field-name">
       <label for="name">{{i18n 'label.first_name'}}</label>
       <input type="text" id="name" oninput={{action nameChanged}} value={{name}}/>
+
+      {{#if noName}}
+        <p class="info info-no-name">
+          {{i18n 'paragraph.no_name_consequences'}}
+        </p>
+      {{/if}}
     </div>
 
     <div class="field field-email">
       <label for="email">{{i18n 'label.email'}}</label>
       <input type="text" id="email" oninput={{action emailChanged}} value={{email}}/>
+
+      {{#if noEmail}}
+        <p class="info info-no-email">
+          {{i18n 'paragraph.no_email_consequences'}}
+        </p>
+      {{/if}}
     </div>
 
-    {{#if noName}}
-      <p class="info info-no-name">
-        {{i18n 'paragraph.no_name_consequences'}}
-      </p>
-    {{/if}}
-    {{#if noEmail}}
-      <p class="info info-no-email">
-        {{i18n 'paragraph.no_email_consequences'}}
-      </p>
-    {{/if}}
     <div class="field field-submit-data">
       <button class="submit-data-button" type="button" onclick={{action submitData}}>{{i18n 'button.submit'}}</button>
     </div>

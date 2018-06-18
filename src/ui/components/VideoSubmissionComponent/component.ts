@@ -13,6 +13,8 @@ export default class VideoSubmissionComponent extends Component {
 
   @tracked('name') get noName() { return this.name === ''; }
   @tracked('email') get noEmail() { return this.email === ''; }
+  @tracked('noName') get hasName() { return !this.noName; }
+  @tracked('noEmail') get hasEmail() { return !this.noEmail; }
 
   public didInsertElement() {
     const {

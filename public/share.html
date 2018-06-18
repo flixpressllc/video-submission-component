@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Telemundo KC</title>
+  <title>KGKC Telemundo de Kansas City</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Telemundo KC">
+  <meta property="og:site_name" content="KGKC Telemundo de Kansas City">
   <meta property="og:locale" content="es_us">
-  <meta property="og:title" content="Telemundo KC">
+  <meta property="og:title" content="KGKC Telemundo de Kansas City">
   <meta property="og:description" content="">
   <!-- <meta property="og:url" content="https://" /> (would need server side rendering for this)-->
   <meta property="og:image" content="https://example.com/generic.jpg" />
@@ -56,20 +56,20 @@
   </style>
 </head>
 <body>
-  <h1>Telemundo KC</h1>
+  <h1>KGKC Telemundo de Kansas City</h1>
   <div class="video-area">
     <video style="display: none" controls></video>
-    <div class="loading">Please wait while we get your video...</div>
+    <div class="loading">Espera mientras recibimos tu video...</div>
   </div>
 
   <div class="share">
-    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ THIS_URL }}" target="_blank">Share on Facebook</a>
-    <a class="twitter" href="https://twitter.com/intent/tweet?text={{ SUGGESTED_TWEET }}&url={{ THIS_URL }}" target="_blank">Share on Twitter</a>
-    <a class="email" href="mailto:?Subject={{ EMAIL_SUBJECT }}&Body={{ EMAIL_BODY }}">Share via email</a>
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ THIS_URL }}" target="_blank">Compartir en Facebook</a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?text={{ SUGGESTED_TWEET }}&url={{ THIS_URL }}" target="_blank">Compartir en Twitter</a>
+    <a class="email" href="mailto:?Subject={{ EMAIL_SUBJECT }}&Body={{ EMAIL_BODY }}">Compartir via correo electrónico</a>
   </div>
 
   <div class="your-own">
-    <a class="button" href="#">Create Your Own Video!</a>
+    <a class="button" href="#"> 22/5000 ¡Crea tu propio video!</a>
   </div>
 
   <script type="text/javascript">
@@ -103,9 +103,9 @@
       Array.from(links).forEach(s => {
         var handleBarsLookup ={
           'THIS_URL': window.location.href,
-          'SUGGESTED_TWEET': 'Check out my Telemundo video!',
+          'SUGGESTED_TWEET': '¡Mira este video que hice para Telemundo de Kansas City!',
           'EMAIL_SUBJECT': '{{ SUGGESTED_TWEET }}',
-          'EMAIL_BODY': 'I made a video for Telemundo KC! Check it out at {{ THIS_URL }}',
+          'EMAIL_BODY': '¡Hice un video para KGKC Telemundo de Kansas City! Check it out at {{ THIS_URL }}',
         }
         var newHref = replaceHandlebars(s.getAttribute('href'), handleBarsLookup);
         s.setAttribute('href', encodeURI(newHref))

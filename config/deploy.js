@@ -8,11 +8,22 @@ module.exports = function(deployTarget) {
     ghpages: {
       gitRemoteUrl: 'git@github.com:flixpressllc/video-submission-component.git',
     },
+
+    cp: {},
+
+    pipeline: {
+      disabled: {
+        ghpages: true,
+        cp: true,
+      },
+    },
   };
 
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
+
+    ENV.pipeline.disabled.ghpages = false;
   }
 
   if (deployTarget === 'staging') {

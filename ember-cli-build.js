@@ -9,8 +9,10 @@ module.exports = function(defaults) {
     inlineContent: {
       'upload-url': { content: (function() {
         switch(process.env.EMBER_ENV) {
+          case 'production': 
+            return '//api.kgkc.video/upload'
           default:
-          return '//localhost:50212/api/upload';
+            return '//localhost:50212/api/upload';
         }
       })() },
     },

@@ -1,8 +1,14 @@
 <div class="video-submission">
   {{#if steps.one}}
+    <p>
+      {{i18n 'paragraph.file_description'}}
+    </p>
     <FileChooser @onFileChosen={{action handleFileChosen}} accept="{{accept}}">
       {{i18n 'button.invoke_file_picker'}}
     </FileChooser>
+    <p class="info info-file-size">
+      {{i18n 'paragraph.file_size_warning'}}
+    </p>
   {{/if}}
 
   {{#if steps.two}}
@@ -38,7 +44,12 @@
   {{/if}}
 
   {{#if steps.four}}
-    <p class="message message-finished-uploading">{{i18n 'paragraph.video_finished_uploading'}}</p>
+    <p class="message message-finished-uploading">
+      {{i18n 'paragraph.video_finished_uploading'}}
+      {{#if hasEmail}}
+        {{i18n 'paragraph.video_finished_uploading_append_email'}}
+      {{/if}}
+    </p>
   {{/if}}
 
 </div>

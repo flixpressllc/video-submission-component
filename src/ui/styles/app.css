@@ -1,20 +1,39 @@
-.video-submission {
+body {
+  background: #f9f9f9;
   font-size: 18px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.video-submission {
+  max-width: 600px;
+  margin: auto;
 }
 
 .video-submission button {
   font-size: 1.3em;
   padding: 0.25em 0.5em;
-  margin: 0.5em;
   border: none;
-  background: #bed7db;
-  border-radius: 6px;
-  box-shadow: 2px 2px 3px rgba(18, 46, 53, 0.3)
+  background: #f00;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px rgba(18, 46, 53, 0.3);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .video-submission button:hover {
-  background-color: #88b2bb;
+  background-color: #911;
 }
 
 .video-submission .message {
@@ -22,4 +41,26 @@
   font-size: 1.2em;
   background-color: #e0e0e0;
   margin: 1em;
+}
+
+.video-submission .field label {
+  display: block;
+  margin-top: 1em;
+}
+
+.video-submission .info {
+  background: #ecece9;
+  color: rgba(0,0,0,0.6);
+  font-size: 0.85em;
+  padding: 0.5em;
+  border-radius: 3px;
+  max-width: 400px;
+}
+
+.video-submission .field input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1em;
+  border: 1px solid #ddd;
 }

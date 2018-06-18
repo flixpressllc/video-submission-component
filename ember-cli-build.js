@@ -10,7 +10,7 @@ module.exports = function(defaults) {
       'upload-url': { content: (function() {
         switch(process.env.EMBER_ENV) {
           case 'production': 
-            return '//api.kgkc.video/upload'
+            return '//api.kgkc.video/api/upload'
           default:
             return '//localhost:50212/api/upload';
         }

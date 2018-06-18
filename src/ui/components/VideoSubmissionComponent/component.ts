@@ -8,6 +8,7 @@ export default class VideoSubmissionComponent extends Component {
 
   @tracked private name = '';
   @tracked private email = '';
+  @tracked private accept = 'video/*';
   @tracked private steps: {[p: string]: true} = {};
 
   @tracked('name') get noName() { return this.name === ''; }
@@ -15,12 +16,14 @@ export default class VideoSubmissionComponent extends Component {
 
   public didInsertElement() {
     const {
+      accept,
       uploadEndpoint,
       submitEndpoint,
       language,
     } = this.bounds.firstNode.parentElement.dataset;
     this.uploadUrl = uploadEndpoint;
     this.submitUrl = submitEndpoint;
+    if (accept) { this.accept = accept; }
     setI18nLanguage(language || 'english');
     setTimeout(() => this.setStep('one'));
   }

@@ -1,6 +1,6 @@
 <div class="video-submission">
   {{#if steps.one}}
-    <FileChooser @onFileChosen={{action handleFileChosen}} accept="video/*">
+    <FileChooser @onFileChosen={{action handleFileChosen}} accept="{{accept}}">
       {{i18n 'button.invoke_file_picker'}}
     </FileChooser>
   {{/if}}

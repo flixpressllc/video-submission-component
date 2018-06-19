@@ -17,7 +17,7 @@ app.registerInitializer({
   }
 });
 
-app.renderComponent('VideoSubmissionComponent', containerElement, null);
+app.renderComponent('WizardComponent', containerElement, null);
 
 app.boot();
-initializeCustomElements(app, { 'video-submission': 'VideoSubmissionComponent' });
+initializeCustomElements(app, { 'form-wizard': 'WizardComponent' });

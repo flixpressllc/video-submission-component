@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'video-submission-component',
+    modulePrefix: 'wizard-component',
     environment
   };
 

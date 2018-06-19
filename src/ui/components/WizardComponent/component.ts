@@ -1,7 +1,7 @@
 import Component, { tracked } from '@glimmer/component';
 import { setI18nLanguage } from '../i18n/helper';
 
-export default class VideoSubmissionComponent extends Component {
+export default class WizardComponent extends Component {
   private file: File;
   private uploadUrl: string;
   private submitUrl: string;

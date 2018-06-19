@@ -16,6 +16,7 @@ export function setText(textBundle: string | object) {
 }
 
 function findString(stringPath: string): string {
+  if (!textLookup) { return ''; }
   const {exists, existingPath, finalValidProperty} = nestedPropertyDetails(textLookup, stringPath);
   if (exists) {
     return finalValidProperty;

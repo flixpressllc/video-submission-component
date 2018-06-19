@@ -3,6 +3,10 @@ import textFor, { setText } from './helper';
 const { module, test } = QUnit;
 
 module('Helper: textFor', function(hooks) {
+  test('allows for a text bundle to NOT be set', function(assert) {
+    assert.equal(textFor(['test']), '');
+  });
+
   test('it returns a string at the root of the object', function(assert) {
     setText({ test: 'did it' });
     assert.equal(textFor(['test']), 'did it');

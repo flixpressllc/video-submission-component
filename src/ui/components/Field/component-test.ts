@@ -20,4 +20,14 @@ module('Component: Field', function(hooks) {
     await this.render(hbs`<Field @label="hi there" as |id|>{{id}}</Field>`);
     assert.ok(this.containerElement.querySelector('div').textContent.match(/hi-there-[\d]/));
   });
+
+  test('it yields a dasherized name', async function(assert) {
+    await this.render(hbs`<Field @label="hi there" as |id name|>{{name}}</Field>`);
+    assert.ok(this.containerElement.querySelector('div').textContent.match('hi-there'));
+  });
+
+  test('it yields a dasherized name from the @name', async function(assert) {
+    await this.render(hbs`<Field @name="hi there" as |id name|>{{name}}</Field>`);
+    assert.ok(this.containerElement.querySelector('div').textContent.match('hi-there'));
+  });
 });

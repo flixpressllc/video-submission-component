@@ -12,22 +12,22 @@
   {{/if}}
 
   {{#if steps.two}}
-    <Field @label={{text-for 'label.first_name'}} as |fieldId|>
+    <Field @label={{text-for 'label.first_name'}} @name="name" as |fieldId nameId|>
       <input type="text" id={{ fieldId }} oninput={{action nameChanged}} value={{name}}/>
 
-      {{#if noName}}
-        <p class="info info-no-name">
-          {{text-for 'paragraph.no_name_consequences'}}
+      {{#if (not name)}}
+        <p class="info info-no-{{ nameId }}">
+          {{text-for (concat 'paragraph.no_' nameId '_consequences')}}
         </p>
       {{/if}}
     </Field>
 
-    <Field @label={{text-for 'label.email'}} as |fieldId|>
+    <Field @label={{text-for 'label.email'}} @name="email" as |fieldId nameId|>
       <input type="text" id="{{ fieldId }}" oninput={{action emailChanged}} value={{email}}/>
 
-      {{#if noEmail}}
-        <p class="info info-no-email">
-          {{text-for 'paragraph.no_email_consequences'}}
+      {{#if (not email)}}
+        <p class="info info-no-{{ nameId }}">
+          {{text-for (concat 'paragraph.no_' nameId '_consequences')}}
         </p>
       {{/if}}
     </Field>

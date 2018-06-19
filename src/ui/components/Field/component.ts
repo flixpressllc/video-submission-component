@@ -9,6 +9,6 @@ function dasherize(str?: string): string {
 
 export default class Field extends Component {
   public id = ++id;
-  public get base() { return dasherize(this.args.name ? this.args.name : this.args.label); }
-  public get safeId() { return this.base + '-' + this.id; }
+  public get baseName() { return dasherize(this.args.name ? this.args.name : this.args.label); }
+  public get safeId() { return this.baseName + '-' + this.id; }
 }

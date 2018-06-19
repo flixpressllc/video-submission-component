@@ -12,27 +12,25 @@
   {{/if}}
 
   {{#if steps.two}}
-    <div class="field field-name">
-      <label for="name">{{text-for 'label.first_name'}}</label>
-      <input type="text" id="name" oninput={{action nameChanged}} value={{name}}/>
+    <Field @label={{text-for 'label.first_name'}} as |fieldId|>
+      <input type="text" id={{ fieldId }} oninput={{action nameChanged}} value={{name}}/>
 
       {{#if noName}}
         <p class="info info-no-name">
           {{text-for 'paragraph.no_name_consequences'}}
         </p>
       {{/if}}
-    </div>
+    </Field>
 
-    <div class="field field-email">
-      <label for="email">{{text-for 'label.email'}}</label>
-      <input type="text" id="email" oninput={{action emailChanged}} value={{email}}/>
+    <Field @label={{text-for 'label.email'}} as |fieldId|>
+      <input type="text" id="{{ fieldId }}" oninput={{action emailChanged}} value={{email}}/>
 
       {{#if noEmail}}
         <p class="info info-no-email">
           {{text-for 'paragraph.no_email_consequences'}}
         </p>
       {{/if}}
-    </div>
+    </Field>
 
     <div class="field field-submit-data">
       <button class="submit-data-button" type="button" onclick={{action submitData}}>{{text-for 'button.submit'}}</button>

@@ -8,6 +8,6 @@ module('Component: VideoSubmissionComponent', function(hooks) {
 
   test('it renders', async function(assert) {
     await this.render(hbs`<VideoSubmissionComponent />`);
-    assert.equal(this.containerElement.textContent, 'Welcome to Glimmer!\n');
+    assert.ok(this.containerElement.querySelector('.video-submission'));
   });
 });

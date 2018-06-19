@@ -8,6 +8,6 @@ module('Component: FileChooser', function(hooks) {
 
   test('it renders', async function(assert) {
     await this.render(hbs`<FileChooser />`);
-    assert.ok(this.containerElement.querySelector('div'));
+    assert.ok(this.containerElement.querySelector('input'));
   });
 });

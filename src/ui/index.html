@@ -16,9 +16,15 @@
   <body>
     {{content-for "body"}}
 
-    <div id="app" data-upload-endpoint="{{content-for 'upload-url'}}" data-language="spanish" data-accept="video/mp4"></div>
-    <script src="{{rootURL}}app.js"></script>
+    <div id="app" data-upload-endpoint="{{content-for 'upload-url'}}" data-text="english" data-accept="video/mp4"></div>
+    
+    <script>
+      var english = function() { return fetch('assets/english.json').then(function(resp) { return resp.json(); }); }
+      var spanish = function() { return fetch('assets/spanish.json').then(function(resp) { return resp.json(); }); }
+    </script>
 
+    <script src="{{rootURL}}app.js"></script>
+    
     {{content-for "body-footer"}}
   </body>
 </html>

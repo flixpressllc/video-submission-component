@@ -1,41 +1,41 @@
 <div class="form-wizard">
   {{#if steps.one}}
     <p>
-      {{i18n 'paragraph.file_description'}}
+      {{text-for 'paragraph.file_description'}}
     </p>
     <FileChooser @onFileChosen={{action handleFileChosen}} accept="{{accept}}">
-      {{i18n 'button.invoke_file_picker'}}
+      {{text-for 'button.invoke_file_picker'}}
     </FileChooser>
     <p class="info info-file-size">
-      {{i18n 'paragraph.file_size_warning'}}
+      {{text-for 'paragraph.file_size_warning'}}
     </p>
   {{/if}}
 
   {{#if steps.two}}
     <div class="field field-name">
-      <label for="name">{{i18n 'label.first_name'}}</label>
+      <label for="name">{{text-for 'label.first_name'}}</label>
       <input type="text" id="name" oninput={{action nameChanged}} value={{name}}/>
 
       {{#if noName}}
         <p class="info info-no-name">
-          {{i18n 'paragraph.no_name_consequences'}}
+          {{text-for 'paragraph.no_name_consequences'}}
         </p>
       {{/if}}
     </div>
 
     <div class="field field-email">
-      <label for="email">{{i18n 'label.email'}}</label>
+      <label for="email">{{text-for 'label.email'}}</label>
       <input type="text" id="email" oninput={{action emailChanged}} value={{email}}/>
 
       {{#if noEmail}}
         <p class="info info-no-email">
-          {{i18n 'paragraph.no_email_consequences'}}
+          {{text-for 'paragraph.no_email_consequences'}}
         </p>
       {{/if}}
     </div>
 
     <div class="field field-submit-data">
-      <button class="submit-data-button" type="button" onclick={{action submitData}}>{{i18n 'button.submit'}}</button>
+      <button class="submit-data-button" type="button" onclick={{action submitData}}>{{text-for 'button.submit'}}</button>
     </div>
   {{/if}}
 
@@ -45,9 +45,9 @@
 
   {{#if steps.four}}
     <p class="message message-finished-uploading">
-      {{i18n 'paragraph.video_finished_uploading'}}
+      {{text-for 'paragraph.video_finished_uploading'}}
       {{#if hasEmail}}
-        {{i18n 'paragraph.video_finished_uploading_append_email'}}
+        {{text-for 'paragraph.video_finished_uploading_append_email'}}
       {{/if}}
     </p>
   {{/if}}

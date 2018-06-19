@@ -1,5 +1,5 @@
 import Component, { tracked } from '@glimmer/component';
-import { setI18nLanguage } from '../i18n/helper';
+import { setText } from '../text-for/helper';
 
 export default class WizardComponent extends Component {
   private file: File;
@@ -16,17 +16,16 @@ export default class WizardComponent extends Component {
   @tracked('noName') get hasName() { return !this.noName; }
   @tracked('noEmail') get hasEmail() { return !this.noEmail; }
 
-  public didInsertElement() {
+  public async didInsertElement() {
     const {
       accept,
       uploadEndpoint,
       submitEndpoint,
-      language,
     } = this.bounds.firstNode.parentElement.dataset;
     this.uploadUrl = uploadEndpoint;
     this.submitUrl = submitEndpoint;
     if (accept) { this.accept = accept; }
-    setI18nLanguage(language || 'english');
+    await this.setText();
     setTimeout(() => this.setStep('one'));
   }
 
@@ -34,6 +33,19 @@ export default class WizardComponent extends Component {
     const newStep = {};
     newStep[stepName] = true;
     this.steps = newStep;
+  }
+
+  private async setText() {
+    const {text} = this.bounds.firstNode.parentElement.dataset;
+    let bundle: string | object;
+    if (typeof window[text] === 'function') {
+      bundle = await window[text]();
+    } else if (window[text].then && typeof window[text].then === 'function') {
+      bundle = await window[text].then();
+    } else {
+      bundle = await window[text];
+    }
+    setText(bundle);
   }
 
   private handleFileChosen(file: File) {

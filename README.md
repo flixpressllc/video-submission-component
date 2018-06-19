@@ -3,6 +3,28 @@
 This README outlines the details of collaborating on this Glimmer application.
 A short introduction of this app could easily go here.
 
+# usage
+
+```html
+    <div id="app" data-upload-endpoint="https://someendpoint.com/upload" data-text="english" data-accept="video/mp4"></div>
+    
+    <script>
+      // the app's container's `data-text` will take a string referring to a global variable
+      // This global variable must contain a json string, an object with keys that resolve to strings,
+      // or a promise which resolves to either of the aforementioned types.
+
+      var english;
+      // For example: any of the items set on the `english` var work below
+      english = function() { return fetch('assets/english.json').then(function(resp) { return resp.json(); }); };
+      english = fetch('assets/english.json').then(function(resp) { return resp.text(); });
+      english = '{"some": {"nested": {"key": "The text to display"}}}';
+      english = {some: {nested: {key: 'The text to display'}}};
+    </script>
+
+    <script src="{{the bundle identifier for this build}}app.js"></script>
+
+```
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.

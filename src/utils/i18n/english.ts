@@ -1,6 +1,6 @@
 export default {
   button: {
-    invoke_file_picker: 'Choose a file',
+    invoke_file_picker: 'Choose a video',
     submit: 'Submit'
   },
   label: {

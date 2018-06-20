@@ -6,14 +6,12 @@ export default class WizardComponent extends Component {
   private uploadUrl: string;
   private submitUrl: string;
 
-  @tracked private name = '';
-  @tracked private email = '';
   @tracked private accept = 'video/*';
   @tracked private steps: {[p: string]: true} = {};
 
   @tracked private fields = [
-    {name: 'name', label: 'First Name', value: this.name, handler: this.updateField},
-    {name: 'email', label: 'Email Address', value: this.email, handler: this.updateField},
+    {name: 'name', label: 'First Name', value: '', handler: this.updateField},
+    {name: 'email', label: 'Email Address', value: '', handler: this.updateField},
   ];
 
   public updateField(name: string, ev: Event & { target: HTMLInputElement }) {

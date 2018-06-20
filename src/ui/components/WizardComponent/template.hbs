@@ -36,7 +36,7 @@
   {{#if steps.four}}
     <p class="message message-finished-uploading">
       {{text-for 'paragraph.video_finished_uploading'}}
-      {{#if email}}
+      {{#if (get 'email.value' (key-by 'name' fields))}}
         {{text-for 'paragraph.video_finished_uploading_append_email'}}
       {{/if}}
     </p>

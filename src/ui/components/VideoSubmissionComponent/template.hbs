@@ -1,14 +1,16 @@
 <div class="video-submission">
   {{#if steps.one}}
+      <video src="http://kgkc.video/promo.mp4" controls style="width:100%;"></video>
     <p>
       {{i18n 'paragraph.file_description'}}
+    </p>
+    <p class="info info-file-size">
+      <img src="http://kgkc.video/images/phone_direction.png" /><br/>
+      {{i18n 'paragraph.file_size_warning'}}
     </p>
     <FileChooser @onFileChosen={{action handleFileChosen}} accept="{{accept}}">
       {{i18n 'button.invoke_file_picker'}}
     </FileChooser>
-    <p class="info info-file-size">
-      {{i18n 'paragraph.file_size_warning'}}
-    </p>
   {{/if}}
 
   {{#if steps.two}}

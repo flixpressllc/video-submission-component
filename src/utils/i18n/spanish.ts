@@ -4,19 +4,19 @@ export default {
     submit: 'Entregar'
   },
   label: {
-    email: 'Dirección de correo electrónico',
-    first_name: 'Nombre de pila',
+    email: 'Tu Número de teléfono o Correo electrónico',
+    first_name: 'Nombre',
   },
   message: {
     upload_failure: 'Algo salió mal. Inténtalo de nuevo más tarde.',
-    uploading: 'Cargando...',
+    uploading: 'Subiendo tu video Puede tomar varios minutos, dependiendo del tamaño del video y la velocidad de su conexión.',
   },
   paragraph: {
-    file_description: 'Elija un video de su teléfono o computadora suyo o de usted y de sus amigos.',
-    file_size_warning: 'Tu video debe durar unos 5 segundos. Más tiempo y su carga tomará más tiempo de lo necesario. Usaremos aproximadamente 3 segundos de tu video.',
-    no_email_consequences: 'Si no proporciona una dirección de correo electrónico, no podemos enviarle un enlace cuando finalice el procesamiento de su video.',
+    file_description: 'Grabe o cargue un video de usted y de sus amigos animandon a tu equipo.',
+    file_size_warning: 'No envíe más de 5 segundos. Solo usamos 3 segundos. Mantenga su teléfono horizontalmente cuando grabe.',
+    no_email_consequences: 'Proporcione su número de teléfono o correo electrónico para que le enviemos el video cuando esté listo.',
     no_name_consequences: 'Si no proporciona su nombre, no podemos personalizar su video.',
     video_finished_uploading: 'Tu video ha sido subido. Si su video es elegido, ¡puede verse en un comercial en KGKC Telemundo de Kansas City!',
-    video_finished_uploading_append_email: 'De cualquier manera, le enviaremos un correo electrónico con un enlace para compartir su video.',
+    video_finished_uploading_append_email: 'De cualquier manera, le enviaremos un correo electrónico o mensaje de texto con un enlace para compartir su video.',
   },
 };

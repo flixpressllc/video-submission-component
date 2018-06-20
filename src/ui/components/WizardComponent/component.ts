@@ -11,16 +11,18 @@ export default class WizardComponent extends Component {
   @tracked private accept = 'video/*';
   @tracked private steps: {[p: string]: true} = {};
 
-  @tracked('name') get noName() { return this.name === ''; }
-  @tracked('email') get noEmail() { return this.email === ''; }
-  @tracked('noName') get hasName() { return !this.noName; }
-  @tracked('noEmail') get hasEmail() { return !this.noEmail; }
+  @tracked private fields = [
+    {name: 'name', label: 'First Name', value: this.name, handler: this.updateField},
+    {name: 'email', label: 'Email Address', value: this.email, handler: this.updateField},
+  ];
 
-  @tracked('name', 'email') get fields() {
-    return [
-      {name: 'name', label: 'First Name', value: this.name, handler: this.nameChanged},
-      {name: 'email', label: 'Email Address', value: this.email, handler: this.emailChanged},
-    ];
+  public updateField(name: string, ev: Event & { target: HTMLInputElement }) {
+    this.fields = this.fields.map((f) => {
+      if (f.name !== name) { return f; }
+      const value = ev.target.value;
+      this[name] = value;
+      return Object.assign({}, f, {value});
+    });
   }
 
   public async didInsertElement() {
@@ -58,14 +60,6 @@ export default class WizardComponent extends Component {
   private handleFileChosen(file: File) {
     this.file = file;
     this.setStep('two');
-  }
-
-  private nameChanged(ev: Event & {target: HTMLInputElement}) {
-    this.name = ev.target.value;
-  }
-
-  private emailChanged(ev: Event & { target: HTMLInputElement }) {
-    this.email = ev.target.value;
   }
 
   private submitData() {

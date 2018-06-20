@@ -14,7 +14,7 @@
   {{#if steps.two}}
     {{#each fields key="@index" as |field|}}
       <Field @label={{text-for (concat 'label.' field.name)}} @name={{field.name}} as |fieldId nameId|>
-        <input type="text" id={{ fieldId }} oninput={{action field.handler}} value={{field.value}}/>
+        <input type="text" id={{ fieldId }} oninput={{action updateField field.name}} value={{field.value}}/>
 
         {{#if (not field.value)}}
           <p class="info info-no-{{ nameId }}">
@@ -36,7 +36,7 @@
   {{#if steps.four}}
     <p class="message message-finished-uploading">
       {{text-for 'paragraph.video_finished_uploading'}}
-      {{#if hasEmail}}
+      {{#if email}}
         {{text-for 'paragraph.video_finished_uploading_append_email'}}
       {{/if}}
     </p>

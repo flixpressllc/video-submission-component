@@ -16,6 +16,13 @@ export default class WizardComponent extends Component {
   @tracked('noName') get hasName() { return !this.noName; }
   @tracked('noEmail') get hasEmail() { return !this.noEmail; }
 
+  @tracked('name', 'email') get fields() {
+    return [
+      {name: 'name', label: 'First Name', value: this.name, handler: this.nameChanged},
+      {name: 'email', label: 'Email Address', value: this.email, handler: this.emailChanged},
+    ];
+  }
+
   public async didInsertElement() {
     const {
       accept,

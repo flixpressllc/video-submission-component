@@ -5,7 +5,7 @@
   },
   "label": {
     "email": "Email Address",
-    "first_name": "First Name"
+    "name": "First Name"
   },
   "message": {
     "upload_failure": "Something went wrong, please try again later.",

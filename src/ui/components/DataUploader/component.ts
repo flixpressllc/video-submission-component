@@ -3,9 +3,8 @@ import textFor from '../text-for/helper';
 
 interface IArgs {
   uploadUrl: string;
+  fields: Array<{name: string, value: string}>;
   file: File;
-  name: string;
-  email: string;
   onComplete: () => void;
 }
 
@@ -13,6 +12,7 @@ export default class DataUploader extends Component {
   @tracked private message = textFor('message.uploading');
 
   public didInsertElement() {
+    if (!this.args.fields) { return; }
     this.uploadVideoAndData()
     .then(this.args.onComplete)
     .catch(() => {
@@ -21,11 +21,17 @@ export default class DataUploader extends Component {
   }
 
   private uploadVideoAndData() {
-    const {uploadUrl, file, name: firstName, email}: IArgs = this.args;
+    const {uploadUrl, file, fields}: IArgs = this.args;
     const formdata = new FormData();
-    const data = JSON.stringify({email, firstName});
+
+    const data = {};
+    fields.forEach((field) => {
+      data[field.name] = field.value;
+    });
+    formdata.append('submission', JSON.stringify(data));
+
     formdata.append('files', file);
-    formdata.append('submission', data);
+
     return window.fetch(uploadUrl, { method: 'POST', body: formdata });
   }
 }

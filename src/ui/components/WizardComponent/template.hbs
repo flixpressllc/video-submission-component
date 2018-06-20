@@ -30,7 +30,7 @@
   {{/if}}
 
   {{#if steps.three}}
-    <DataUploader @name={{name}} @email={{email}} @file={{file}} @onComplete={{action handleDataUploaded}} @uploadUrl={{uploadUrl}} @submitUrl={{submitUrl}} />
+    <DataUploader @fields={{fields}} @file={{file}} @onComplete={{action handleDataUploaded}} @uploadUrl={{uploadUrl}} @submitUrl={{submitUrl}} />
   {{/if}}
 
   {{#if steps.four}}

@@ -1,6 +1,6 @@
 export default {
   button: {
-    invoke_file_picker: 'Escoge un video',
+    invoke_file_picker: 'Graba o Escoge un Video',
     submit: 'Entregar'
   },
   label: {

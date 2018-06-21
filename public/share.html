@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://flixpress.s3.amazonaws.com/Telemundo/tld-social.jpg" />
   <!-- <meta name="twitter:site" content="@telemundoKC"> -->
   <meta name="twitter:card" content="summary_large_image">
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121106515-1"></script>
   <style>
     body {
       background: #f9f9f9;
@@ -91,7 +91,7 @@
   </div>
 
   <div class="share" style="width:100%; text-align: center; padding-top: 15px;">
-    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ THIS_URL }}" target="_blank"><img src="http://kgkc.video/images/facebook.png" style="border: none; text-decoration: none; padding:5px;"/> </a>
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ THIS_URL }}" target="_blank"><img src="http://kgkc.video/images/facebook.png" style="border: none; text-decoration: none; padding:5px;"/></a>
     <a class="twitter" href="https://twitter.com/intent/tweet?text={{ SUGGESTED_TWEET }}&url={{ THIS_URL }}" target="_blank"><img src="http://kgkc.video/images/twitter.png" style="border: none; text-decoration: none;padding:5px;"/></a>
     <a class="email" href="mailto:?Subject={{ EMAIL_SUBJECT }}&Body={{ EMAIL_BODY }}"><img src="http://kgkc.video/images/email.png" style="border: none; text-decoration: none;padding:5px;"/></a>
   </div>
@@ -161,5 +161,14 @@
       setVideoAndPlay('http://kgkc.video/default.mp4'); console.warn('no default video url is specified yet')
     })
   </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-121106515-1');
+  </script>
+
 </body>
 </html>

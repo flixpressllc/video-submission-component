@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>KGKC Telemundo de Kansas City</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <div class="header"> <img  src="http://kgkc.video/images/logo.png" style="padding: 5px; max-width: 300px;"> </div>
-    {{content-for "head"}}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>KGKC Telemundo de Kansas City</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{rootURL}}app.css">
-
-    {{content-for "head-footer"}}
-  </head>
-  <body>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KGKC Telemundo de Kansas City">
+  <meta property="og:locale" content="es_us">
+  <meta property="og:title" content="¡Crea su video para KGKC Telemundo de Kansas City!">
+  <meta property="og:description" content="">
+  <!-- <meta property="og:url" content="https://" /> (would need server side rendering for this)-->
+  <meta property="og:image" content="https://flixpress.s3.amazonaws.com/Telemundo/tld-social.jpg" />
+  <!-- <meta name="twitter:site" content="@telemundoKC"> -->
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="app-5f8cc4e17f7a43f29d9df483d5e47cb9.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121106515-1"></script>
+</head>
+<body>
+<div class="header"> <img src="http://kgkc.video/images/logo.png" style="padding: 5px; max-width: 300px;"> </div>
     {{content-for "body"}}
 
     <div id="app" data-upload-endpoint="{{content-for 'upload-url'}}" data-language="spanish" data-accept="video/mp4"></div>
     <script src="{{rootURL}}app.js"></script>
 
     {{content-for "body-footer"}}
+
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121106515-1');
+</script>
+
   </body>
 </html>

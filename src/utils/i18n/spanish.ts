@@ -9,7 +9,7 @@ export default {
   },
   message: {
     upload_failure: 'Algo salió mal. Inténtalo de nuevo más tarde.',
-    uploading: 'Subiendo tu video Puede tomar varios minutos, dependiendo del tamaño del video y la velocidad de su conexión.',
+    uploading: 'Subiendo tu video. Puede tomar varios minutos, dependiendo del tamaño del video y la velocidad de su conexión.',
   },
   paragraph: {
     file_description: 'Grabe o cargue un video de usted y de sus amigos animandon a tu equipo.',

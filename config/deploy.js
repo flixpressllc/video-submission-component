@@ -34,6 +34,14 @@ module.exports = function(deployTarget) {
     ENV.cp.destDir = '\\\\DEVOLVED-SERVER\\Sites\\KGKC\\Main';
   }
 
+  if (deployTarget === 's-kgkc') {
+    ENV.build.environment = 'production';
+    // configure other plugins for kgkc deploy target here
+
+    ENV.pipeline.disabled.cp = false;
+    ENV.cp.destDir = '\\\\DEVOLVED-SERVER\\Sites\\KGKC\\Main\\staging';
+  }
+
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
     // configure other plugins for production deploy target here

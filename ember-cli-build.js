@@ -19,7 +19,7 @@ module.exports = function(defaults) {
 
     rollup: {
       plugins: [
-        resolve({ jsnext: true, module: true, main: true }),
+        resolve({ jsnext: true, module: true, main: true, browser: true }),
         commonjs()
       ]
     }

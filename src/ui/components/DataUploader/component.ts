@@ -11,6 +11,12 @@ interface IArgs {
 
 export default class DataUploader extends Component {
   @tracked private message = i18n('message.uploading');
+  @tracked private progress = 0;
+  @tracked('progress') private get isUploading() {
+    return this.progress < 100 && this.progress > 0;
+  }
+
+  private isFaking = false;
 
   public didInsertElement() {
     this.uploadVideoAndData()
@@ -35,6 +41,8 @@ export default class DataUploader extends Component {
       const updateProgress = (oEvent) => {
         if (oEvent.lengthComputable) {
           this.uploadProgress(oEvent.loaded / oEvent.total * 100);
+        } else {
+          this.fakeUploadProgress();
         }
       };
 
@@ -72,6 +80,14 @@ export default class DataUploader extends Component {
   }
 
   private uploadProgress(percent: number) {
-    console.log(percent);
+    this.progress = percent;
+  }
+
+  private fakeUploadProgress() {
+    if (this.isFaking) { return; }
+    this.isFaking = true;
+    setInterval(() => {
+      if (this.progress < 95) { this.progress++; }
+    }, 1500);
   }
 }

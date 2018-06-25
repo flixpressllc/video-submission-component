@@ -1,1 +1,9 @@
-<div class="message message-data-uploader">{{message}}</div>
+<div class="message message-data-uploader">
+  {{message}}
+
+  {{#if isUploading}}
+    <progress max="100" value="{{progress}}">
+      {{progress}}%
+    </progress>
+  {{/if}}
+</div>

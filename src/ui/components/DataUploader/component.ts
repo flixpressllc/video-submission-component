@@ -26,14 +26,15 @@ export default class DataUploader extends Component {
     const data = JSON.stringify({email, firstName});
     formdata.append('files', file);
     formdata.append('submission', data);
-    // return window.fetch(uploadUrl, { method: 'POST', body: formdata });
+    return this.doXhrUpload(uploadUrl, formdata);
+  }
+
+  private doXhrUpload(url, formdata) {
     return new Promise((res, rej) => {
       const oReq = new XMLHttpRequest();
       const updateProgress = (oEvent) => {
         if (oEvent.lengthComputable) {
-          console.log(oEvent);
           this.uploadProgress(oEvent.loaded / oEvent.total * 100);
-          // ...
         }
       };
 
@@ -42,19 +43,16 @@ export default class DataUploader extends Component {
       oReq.addEventListener('error', transferFailed);
       oReq.addEventListener('abort', transferCanceled);
 
-      oReq.open('POST', uploadUrl);
+      oReq.open('POST', url);
       oReq.send(formdata);
 
-      // ...
-
       function transferComplete(evt) {
-        console.log('transfer complete');
         res();
         teardown();
       }
 
       function transferFailed(evt) {
-        console.log('transfer failed');
+        console.error('transfer failed'); // tslint:disable-line no-console
         rej(evt);
         teardown();
       }
